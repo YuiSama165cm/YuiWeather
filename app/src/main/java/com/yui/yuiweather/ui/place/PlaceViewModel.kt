@@ -1,9 +1,8 @@
-package com.yui.yuiweather.logic.model
+package com.yui.yuiweather.ui.place
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.yui.yuiweather.logic.Repository
+import com.yui.yuiweather.logic.model.Place
 
 class PlaceViewModel : ViewModel() {
 
@@ -15,7 +14,14 @@ class PlaceViewModel : ViewModel() {
         Repository.searchPlaces(query)
     }
 
-    fun searchPlaces(query: String){
+    fun searchPlaces(query: String) {
         searchLiveData.value = query
     }
+
+    fun savePlace(place: Place) = Repository.savePlace(place)
+
+    fun getSavedPlace() = Repository.getSavedPlace()
+
+    fun isPlaceSaved() = Repository.isPlaceSaved()
+
 }
